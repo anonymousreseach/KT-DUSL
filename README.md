@@ -1,4 +1,4 @@
-# KTUSL Knowledge Tracing Experiments
+# KTUSL Uncertainty Aware Knowledge tracing using Subjective Logic
 
 This repository contains all the utilities I use to benchmark **KTUSL** (Uncertainty Aware Knowledge tracing using Subjective Logic) and several reference models (BKT, PFA, SAKT, UKT, DKVMN, optional DKT). It provides:
 
