@@ -1,0 +1,25 @@
+data:
+  datasets: [assist2015, eedi, junyi]
+#, assist2012, 
+split:
+  test_frac: 0.2
+
+filter:
+  level: null
+  level_by_dataset: { eedi: 3, junyi: null, assist2015: null }
+  first_attempt_only: false
+
+model:
+  name: bkt
+  params:
+    p_init: 0.20
+    p_learn: 0.10
+    p_slip: 0.25
+    p_guess: 0.30
+
+eval:
+  seed: 42
+  combine_mode: mean              # same rule as DKT/SAKT/UKT on multi-concepts
+  print_stdout: true
+  save_predictions: outputs/preds_{model}_{dataset}.csv
+  save_metrics: outputs/metrics_log.csv

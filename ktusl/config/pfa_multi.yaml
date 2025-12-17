@@ -1,0 +1,24 @@
+data:
+  datasets: [assist2015, eedi, junyi]
+
+split:
+  test_frac: 0.2
+
+filter:
+  level: null
+  level_by_dataset: { eedi: 3, junyi: null, assist2015: null }
+  first_attempt_only: false
+
+model:
+  name: pfa
+  params:
+    beta0: -1.0 
+    beta_win: 0.5 
+    beta_fail: -0.3
+
+eval:
+  seed: 42
+  combine_mode: mean
+  print_stdout: true
+  save_predictions: outputs/preds_{model}_{dataset}.csv
+  save_metrics: outputs/metrics_log.csv

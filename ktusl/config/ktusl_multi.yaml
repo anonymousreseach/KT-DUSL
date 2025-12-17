@@ -1,0 +1,26 @@
+data:
+  datasets: [assist2015, eedi,junyi]
+   
+
+split:
+  test_frac: 0.2
+
+filter:
+  level: null
+  level_by_dataset: { eedi: 3, junyi: null, assist2015: null }
+  first_attempt_only: false
+  low_mastery_pmax: 0.5   # keep only students with P(correct) <= 0.5
+
+model:
+  name: ktusl
+  params:
+    W: 2.0       # prior strength (evidence weight)
+    a: 0.5       # base rate (prior mean mastery)
+
+eval:
+  seed: 42
+  combine_mode: mean
+  threshold: 0.5
+  print_stdout: true
+  save_predictions: outputs/preds_{model}_{dataset}.csv
+  save_metrics: outputs/metrics_log.csv

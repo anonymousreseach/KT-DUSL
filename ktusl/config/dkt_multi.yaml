@@ -1,0 +1,30 @@
+data:
+  datasets: [eedi, junyi, assist2012]
+
+split:
+  test_frac: 0.2
+
+filter:
+  level: null
+  level_by_dataset: { eedi: 3, junyi: null, assist2012: null }
+  first_attempt_only: true
+
+model:
+  name: dkt
+  params:
+    emb_size: 128
+    hidden_size: 128
+    dropout: 0.2
+    epochs: 80
+    batch_size: 64
+    lr: 0.001
+    max_seq_len: 200
+    val_frac: 0.1
+    patience: 8
+    
+eval:
+  seed: 42
+  combine_mode: mean
+  print_stdout: true
+  save_predictions: outputs/preds_{model}_{dataset}.csv
+  save_metrics: /home/raitchab/kt_repo/outputs/metrics_log.csv

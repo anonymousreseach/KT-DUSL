@@ -1,0 +1,32 @@
+data:
+  datasets: [assist2015, eedi, junyi]
+
+split:
+  test_frac: 0.2
+
+filter:
+  level: null
+  level_by_dataset: { eedi: 3, junyi: null, assist2015: null }
+  first_attempt_only: false
+
+model:
+  name: ukt
+  params:
+    d_model: 128
+    n_blocks: 2
+    n_heads: 4
+    d_ff: 256
+    dropout: 0.2        # slightly more regularization
+    seq_len: 200
+    epochs: 80          # max epochs; early stopping often stops earlier
+    batch_size: 64      # 64 or 128
+    lr: 0.001
+    val_frac: 0.1       # 10% of students for internal validation
+    patience: 8         # early-stopping patience on val AUC
+
+eval:
+  seed: 42
+  combine_mode: mean
+  print_stdout: true
+  save_predictions: outputs/preds_{model}_{dataset}.csv
+  save_metrics: outputs/metrics_log.csv   # portable path (avoid /home/...)
